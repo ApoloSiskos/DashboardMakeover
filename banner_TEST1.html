@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto');
+
+    body{
+    color: #fff;
+    font-family: Roboto;
+    margin:0;
+    overflow:hidden;
+    }
+    h1{
+    font-size: 1.5em;
+    }
+    h3{
+    font-size: 1.5em!important;
+    font-weight: 100;
+    margin: 0;
+    padding: 5px;
+    }
+    .redSq{
+    background-color: #E90649;
+    width: 117px;
+    height: 241px;
+    float:left;
+    }
+.row {
+    display: table;
+    width: 100%;
+    height: 241px; 
+    background-color:#454545;
+}
+.row > .col-lg-6 {
+    display: table-cell;
+    vertical-align: middle;
+}
+.container {
+  /*display: flex;*/
+  flex-wrap: wrap;
+}
+.container > div {
+  padding: 15px;
+  margin: 5px;
+  flex: 0 0 calc(100% - 20px);
+  text-align: left;
+}
+td{
+  padding: 2px 2px;
+  text-align: center;
+  margin: 6px 0;
+  border: none;
+}
+table{
+  width: 100%;
+  background-color:#454545;
+  font-weight:500;
+  border-collapse: separate;
+  border-spacing:0.3em 1.1em;
+  color: #fff;
+  border: 0;
+}
+p{
+    font-size: 1.5em;
+}
+    .boxes{
+    padding-top: 40px;
+    padding-left: 30px;
+    padding-right: 5%;
+    min-width: 200px;
+    float:left;
+    display: inline-block;
+    }
+
+    #line{
+    border-bottom: solid 1px #CCC;
+    margin-top: 0px;
+    padding-top: 15px;
+    }
+
+    .infobox {
+    float:left;
+    min-height:150px;
+    min-width: 100%;
+    margin: 0;
+    padding: 18px 0;
+    }
+
+    .infobox1 {
+    float:left;
+    min-height:150px;
+    min-width: 100%;
+    margin: 0;
+    padding: 18px 0;
+    }
+
+    .infobox2 {
+    float:left;
+    min-height:150px;
+    min-width: 50%;
+    margin: 0;
+    padding: 18px 0;
+    }
+
+    .infobox3 {
+    float:left;
+    min-height:150px;
+    min-width: 33.33%;
+    margin: 0;
+    padding: 18px 0;
+    }
+
+    .infobox4 {
+    float:left;
+    min-height:150px;
+    min-width: 25%;
+    margin: 0;
+    padding: 18px 0;
+    }
+
+    .infobox5 {
+    float:left;
+    min-height:150px;
+    min-width: 20%;
+    margin: 0;
+    padding: 18px 0;
+    }
+
+    div.leftBox{
+    float:left;
+    padding-left: 20%;
+    }
+    div.rightBox{
+    float:right;
+    padding-right:20%;
+    }
+
+    .infocontentheader {
+    text-align: center;
+    line-height: 2.8;
+    color: #fff;
+    padding-top: 20px;
+    padding-bottom:2px;
+    }
+
+    .infocontent{
+    text-align: center;
+    color: #fff;
+    width: 50%;
+    float: left;
+    }
+
+
+    div#facebook.infobox{
+    background-color: #3c5999;
+    }
+
+    div#twitter.infobox{
+    background-color: #1da1f2;
+    }
+    div#twitter.infobox img{
+    height: 47px;
+    }
+
+
+    div#programmatic.infobox{
+    color: #fff;
+    background-color: #a15aa0;
+    }
+
+    div#display.parentbox{
+    background-color: #b3b3b3;
+    color: #fff;
+    }
+
+    div#video.parentbox{
+    background-color: #999999;
+    color: #fff;
+    }
+
+    div#mixed.parentbox{
+    background-color: #c1c1c1;
+    color: #fff;
+    }
+
+    #programmatic div.infocontentheader{
+    color: #fff;
+    }
+    div#programmatic_value.infocontent{
+    color: #000;
+    }
+
+    div#youtube.infobox{
+    background-color: #d93738;
+    }
+    div#youtube.infobox img{
+    height: 47px;
+    }
+
+  div#instagram.infobox{
+    background-color: #bb95a9;
+    }
+    div#instagram.infobox img{
+    height: 47px;
+    }
+
+    .hidden{
+    display:none;
+    }
+    
+    #parent_div_1{
+        width:50%;
+        min-height: 150px;
+        background-color: #757476;
+        margin-right:0px;
+        float:left;
+    }
+    #parent_div_2{
+        width:50%;
+        min-height: 150px;
+        background-color: #8D8D8D;
+        margin-right:0px;
+        float:left;
+    }
+    .parentbox{
+        width:33.33%;
+        min-height: 150px;
+        /*background-color: #8D8D8D;*/
+        margin-right:0px;
+        float:left;
+    }
+    .parentbox1{
+        width:100%;
+        min-height: 150px;
+        margin-right:0px;
+        float:left;
+    }
+    .parentbox2{
+        width:50%;
+        min-height: 150px;
+        margin-right:0px;
+        float:left;
+    }
+    .parentbox3{
+        width:33.33%;
+        min-height: 150px;
+        margin-right:0px;
+        float:left;
+    }
+    .child_div_1{
+    margin-top: 50px;
+    margin-left: 15%;
+    margin-bottom: 0px;
+    text-align: left;
+    }
+    .child_div_2{
+    margin-left: 15%;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    text-align: left;
+    }
+     .child_budget{
+    margin-top: 10px;
+    margin-bottom: 40px;
+    padding-left:15%;
+    text-align: left;
+    float: left;
+    }
+    .child_spend{
+    margin-top: 10px;
+    margin-bottom: 40px;
+    padding-right: 15%;
+    text-align: left;
+    float:right;
+    }
+     .child_title{
+    margin-top: 50px;
+    margin-bottom: 0px;
+    text-align: center;
+    }
+    .child_budget_number{
+        padding-right: 20%;
+    }
+    .child_spend_number{
+        padding-left: 20%;
+    }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+<div class="row">
+<div class="col-lg-6" style="background-color: #e90649; width: 117px;">&nbsp;</div>
+<div class="col-lg-6" style="max-width: 100px; padding-left: 10px; font-size: 2vw;">Budget Status</div>
+<div class="col-lg-6">
+<div class="container">
+<div class="boxes">
+<p>TOTAL BUDGET</p>
+<div id="total_budget"></div>
+</div>
+<div class="boxes">
+<p>TOTAL SPEND TO DATE</p>
+<div id="total_spend"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<!---->
+<div class="infobox" id="facebook">
+<div class="infocontentheader"><img src="https://dl.dropboxusercontent.com/s/o0t7hwmiecozswk/facebook.png?dl=0" alt="facebook logo" /></div>
+<div class="rightBox">
+<h3>Spend</h3>
+<h3 id="facebook_spend"></h3>
+</div>
+<div class="leftBox">
+<h3>Budget</h3>
+<h3 id="facebook_budget"></h3>
+</div>
+</div>
+<div class="infobox" id="twitter">
+<div class="infocontentheader"><img src="https://dl.dropboxusercontent.com/s/fq9jy9x653ahm41/twitter.png?dl=0" /></div>
+<div class="rightBox">
+<h3>Spend</h3>
+<h3 id="twitter_spend"></h3>
+</div>
+<div class="leftBox">
+<h3>Budget</h3>
+<h3 id="twitter_budget"></h3>
+</div>
+</div>
+<div class="infobox" id="programmatic">
+<div id="programmatic" class="infocontentheader">PROGRAMMATIC</div>
+<div class="rightBox">
+<h3>Spend</h3>
+<h3 id="programmatic_spend"></h3>
+</div>
+<div class="leftBox">
+<h3>Budget</h3>
+<h3 id="programmatic_budget"></h3>
+</div>
+</div>
+<div class="infobox" id="youtube">
+<div class="infocontentheader"><img src="https://dl.dropboxusercontent.com/s/klfto20x32ecnk1/youtube.png?dl=0" /></div>
+<div class="rightBox">
+<h3>Spend</h3>
+<h3 id="youtube_spend"></h3>
+</div>
+<div class="leftBox">
+<h3>Budget</h3>
+<h3 id="youtube_budget"></h3>
+</div>
+</div>
+<div class="infobox" id="instagram">
+<div class="infocontentheader"><img src="https://dl.dropboxusercontent.com/s/qa6hquhrgqzs90j/instagram_white.png?dl=0" /></div>
+<div class="rightBox">
+<h3>Spend</h3>
+<h3 id="instagram_spend"></h3>
+</div>
+<div class="leftBox">
+<h3>Budget</h3>
+<h3 id="instagram_budget"></h3>
+</div>
+</div>
+
+
+
+<script>// <![CDATA[
+var json_data = {"headers":["Adset Platform","IO Channel","IO Capped Cost","Spend"],"rows":[["youtube","video",41787.19020000001,52744.25275],["programmatic","video",33205.954,667.2651179999999],["programmatic","display",45440.5016,700.6704779999999],["instagram","Other",null,3940.1800000000003],["instagram","display",13402.5684,9438.71],["instagram","mixed",11715.5379,11711.030000000002],["instagram","video",13392.026,13392.009999999998],["facebook","mixed",32592.301399999997,21991.8],["facebook","video",13969.8222,13969.82],["facebook","Other",null,10492.54]]} ;
+
+    var platform_data = json_data.rows;
+    var facebook_element = document.getElementById("facebook");
+    var youtube_element = document.getElementById("youtube");
+    var twitter_element = document.getElementById("twitter");
+    var instagram_element = document.getElementById("instagram");
+    var programmatic_element = document.getElementById("programmatic");
+    var video_element = document.getElementById("video");
+    var display_element = document.getElementById("display");
+    var mixed_element = document.getElementById("mixed");
+
+
+    function onlyUnique(value, index, self) { 
+        return self.indexOf(value) === index;
+    }
+    function formatNumber (num) {
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    }
+    var platforms = [];
+    for (var i in platform_data) {
+    platforms[i] = platform_data[i][0].toLowerCase();
+    }
+   
+    var unique_platforms = platforms.filter( onlyUnique );
+ 
+
+    var target_width = 100/(unique_platforms.length-2);
+    var width_str=target_width+"%";
+
+
+    var total_spend = 0;
+    var total_budget = 0;
+    var total_display_spend = 0;
+    var total_video_spend = 0;
+    var total_mixed_spend = 0;
+    var total_display_budget = 0;
+    var total_video_budget = 0;
+    var total_mixed_budget = 0;
+    
+    for (var i in unique_platforms) {
+        var platform_name = unique_platforms[i].toLowerCase();
+
+        var display_spend_total = 0;
+        var display_budget_total = 0;
+        var video_spend_total = 0;
+        var video_budget_total = 0;
+        var mixed_spend_total = 0;
+        var mixed_budget_total = 0;
+
+        for (var x in platform_data){
+            if(platform_data[x][0].toLowerCase() == platform_name && platform_data[x][1] !== 'Other'){
+                switch(platform_data[x][1]) {
+                    case "display":
+                    // Red Dot
+                    display_spend_total = display_spend_total + platform_data[x][3];
+                    display_budget_total = display_budget_total + platform_data[x][2];
+                    total_spend = total_spend + display_spend_total;
+                    total_budget = total_budget + display_budget_total;
+                    break;
+                    case "video":
+                    video_spend_total = video_spend_total + platform_data[x][3];
+                    video_budget_total = video_budget_total + platform_data[x][2];
+                    total_spend = total_spend + video_spend_total;
+                    total_budget = total_budget + video_budget_total;
+                    break;
+                    case "mixed":
+                    mixed_spend_total = mixed_spend_total + platform_data[x][3];
+                    mixed_budget_total = mixed_budget_total + platform_data[x][2];
+                    total_spend = total_spend + mixed_spend_total;
+                    total_budget = total_budget + mixed_budget_total;
+                    break;
+                    default:
+                    doNothing = "";
+                }
+            }
+
+        }
+
+        var platform_spend = display_spend_total + video_spend_total + mixed_spend_total;
+        var platform_budget = display_budget_total + video_budget_total + mixed_budget_total;
+        var generic_element = document.getElementById(platform_name);
+
+
+        var element_spend_name = platform_name+"_spend";
+        var fl_spend = parseFloat(platform_spend).toFixed(0);
+        var curr_flag = "&pound;"+formatNumber(fl_spend);
+        document.getElementById(element_spend_name).innerHTML = curr_flag;
+        
+        var element_budget_name = platform_name+"_budget";
+        var fl_budget = parseFloat(platform_budget).toFixed(0);
+        var curr_flag_bud = "&pound;"+formatNumber(fl_budget);
+        document.getElementById(element_budget_name).innerHTML = curr_flag_bud;
+
+
+        total_display_spend = total_display_spend + display_spend_total;
+        total_video_spend = total_video_spend + video_spend_total;
+        total_mixed_spend = total_mixed_spend + mixed_spend_total;
+
+        total_display_budget = total_display_budget + display_budget_total;
+        total_video_budget = total_video_budget + video_budget_total;
+        total_mixed_budget = total_mixed_budget + mixed_budget_total;
+
+    }
+
+    var total_budget_string = "<h1>&pound;" + formatNumber(Number(total_budget).toFixed(0)) + "</h1>";
+    document.getElementById("total_budget").innerHTML = total_budget_string;
+
+    var total_spend_string = "<h1>&pound;" + formatNumber(Number(total_spend).toFixed(0)) + "</h1>";
+    document.getElementById("total_spend").innerHTML = total_spend_string;
+
+    var total_display_string = "<div class=&quot;child_spend_number&quot;><h3>&pound;" + formatNumber(Number(total_display_spend).toFixed(0)) + "</h3></div>";
+    document.getElementById("display_total").innerHTML = total_display_string;
+
+    var total_video_string = "<div class=&quot;child_spend_number&quot;><h3>&pound;" + formatNumber(Number(total_video_spend).toFixed(0)) + "</h3></div>";
+    document.getElementById("video_total").innerHTML = total_video_string;
+
+    var total_mixed_string = "<div class=&quot;child_spend_number&quot;><h3>&pound;" + formatNumber(Number(total_mixed_spend).toFixed(0)) + "</h3></div>";
+    document.getElementById("mixed_total").innerHTML = total_mixed_string;
+
+    var total_display_budget_string = "<div class=&quot;child_budget_number&quot;><h3>&pound;" + formatNumber(Number(total_display_budget).toFixed(0)) + "</h3></div>";
+    document.getElementById("display_budget").innerHTML = total_display_budget_string;
+
+    var total_video_budget_string = "<div class=&quot;child_budget_number&quot;><h3>&pound;" + formatNumber(Number(total_video_budget).toFixed(0)) + "</h3></div>";
+    document.getElementById("video_budget").innerHTML = total_video_budget_string;
+
+    var total_mixed_budget_string = "<div class=&quot;child_budget_number&quot;><h3>&pound;" + formatNumber(Number(total_mixed_budget).toFixed(0)) + "</h3></div>";
+    document.getElementById("mixed_budget").innerHTML = total_mixed_budget_string;
+
+
+    
+    var statBox = Array.from(document.querySelectorAll('.infobox'));
+
+    var element_id;
+    
+    var parentBoxlist = Array.from(document.querySelectorAll('.parentbox'));
+
+    var channel_spend_check = 0;
+    var spend_channels = [];
+
+    if (total_mixed_spend > 0.0) {channel_spend_check = channel_spend_check + 1;spend_channels[0] = 'mixed';};
+    if (total_video_spend > 0.0) {channel_spend_check = channel_spend_check + 1;spend_channels[1] = 'video';};
+    if (total_display_spend > 0.0) {channel_spend_check = channel_spend_check + 1;spend_channels[2] = 'display';};
+
+// ]]></script>
+</body>
+</html>

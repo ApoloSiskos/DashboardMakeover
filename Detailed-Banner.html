@@ -1,0 +1,234 @@
+<style>
+body{
+  color: #fff;
+  font-family: Arial;
+}
+
+h1{
+  font-size: 45px;
+  margin: 0;
+}
+
+h2{
+  font-size: 28.5px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+h3{
+  font-size: 21px;
+  margin-top: 75px;
+  color: #484848;
+}
+h4{
+  margin-bottom:0px;
+  padding-bottom:0px;
+}
+#subtext{
+  margin-left:305px;
+}
+p{
+  margin: 0;
+}
+
+p2{
+  padding-top: 15px
+  
+}
+.wrapper{
+  background-color: #484848;
+}
+
+#brandSq {
+    float: left;
+    width: 55%;
+    height: 402px;
+    background-color: #E90649;
+}
+
+#productImg{
+  width:100%;
+  height: 300px;
+}
+#beamlySq {
+    float: left;
+    width: 45%;
+    height: 125px;
+    background-color: #fff;
+}
+#beamlyLogo {
+    float: right;
+    display: block;
+    padding: 20px 30px 0 20px;
+}
+
+#smileySq {
+    float: left;
+    width: 45%;
+    height: 277px;
+    background-color: #484848;
+}
+#smile{
+  width: 120px;
+  float:left;
+  display:block;
+  padding-right: 50px;
+}
+.campBox{
+  padding-top: 75px;
+  padding-left: 75px;
+}
+
+div #centerText {
+    width: 70%; 
+    padding-left: 5%;
+    margin: 0 auto;
+}
+
+#productLogo {
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    max-height: 220px;
+}
+
+.list {
+  padding-right: 14px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline; 
+    padding-left: 4px;
+    color: #000;
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+a{
+   color: #fff;
+   text-decoration: none;
+}
+
+a:hover{
+   color: #008cbc;
+   text-decoration: underline;
+}
+div.nav{
+  padding-top: 3.5%;
+  padding-left: 5%;
+}
+
+#smiley{
+   width: 128px;
+   height: 139px;
+}
+
+.bad {
+  background-image: url("http://res.cloudinary.com/beamly/image/upload/s--WskUIEmi--/v1496131913/Dojo/face1.svg"); 
+  display: block;
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+
+.sad {
+  background-image: url("http://res.cloudinary.com/beamly/image/upload/s--ZvFxDmpx--/v1496131913/Dojo/face2.svg"); 
+  display: block;
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+
+.average {
+  background-image: url("http://res.cloudinary.com/beamly/image/upload/s--Eh3igQjq--/v1496131913/Dojo/face3.svg"); 
+  display: block;
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+
+.good {
+  background-image: url("http://res.cloudinary.com/beamly/image/upload/s--Eh3igQjq--/v1496131913/Dojo/face4.svg"); 
+  display: block;
+  background-size: cover;
+  background-size: 80px 60px;
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+
+.great {
+  background-image: url("http://res.cloudinary.com/beamly/image/upload/s--Eh3igQjq--/v1496131913/Dojo/face5.svg"); 
+  display: block;
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+
+.perfect {
+  background-image: url("http://res.cloudinary.com/beamly/image/upload/s--Eh3igQjq--/v1496131913/Dojo/face6.svg"); 
+  display: block;
+    background-size: 150px;
+    background-repeat: no-repeat;
+}
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div class="wrapper">
+<div id="brandSq">
+<div class="nav">
+<ul>
+<li><a href="#home">HOME</a></li>
+</ul>
+</div>
+<img id="productLogo" src="https://dl.dropboxusercontent.com/s/7xte8qhlge6x6vo/joop-logo.png?dl=0" alt="Rimmel Logo" />
+<div id="centerText">
+<h2></h2>
+<p2>{Query.Comm Start Date} - {Query.Comm End Date}</p2></div>
+</div>
+<div id="beamlySq"><img id="beamlyLogo" src="https://dl.dropboxusercontent.com/s/048iyjm2ajuhrzr/beamly_logo.png?dl=0" alt="Beamly Logo" /></div>
+<div id="smileySq">
+<div class="campBox">
+<div id="smiley"></div>
+<h2>{Query.Comm Heading}</h2>
+</div>
+</div>
+</div>
+<script>// <![CDATA[
+var fob = {Query.Comm Smiley};
+var image_url = '';
+
+switch(fob) {
+                    case 1:
+                    // 1 box
+                    image_url = "\"https://dl.dropboxusercontent.com/s/1uc4aao51g3rfey/face1.svg?dl=0\"";
+                    break;
+                    case 2:
+                    // 2 box's
+      				image_url = "\"https://dl.dropboxusercontent.com/s/18dhqm4n1m7v42k/face2.svg?dl=0\"";
+                    break;
+                    case 3:
+      				image_url = "\"https://dl.dropboxusercontent.com/s/zd22l6vu323ud9w/face3.svg?dl=0\"";
+                    break;					
+					case 4:
+      				image_url = "\"https://dl.dropboxusercontent.com/s/qmjo3rmuhr0j5uv/face4.svg?dl=0\"";
+                    break;
+					case 5:
+      				image_url = "\"https://dl.dropboxusercontent.com/s/m6x9cvjkizont4g/face5.svg?dl=0\"";
+                    break;
+					case 6:
+      				image_url = "\"https://dl.dropboxusercontent.com/s/vp11wbl5sr76zim/face6.svg?dl=0\"";
+                    break;
+                    default:
+                }
+
+var smiley_url = "<img id=\"smile\" src="+image_url+" alt=\"smiley face\"/>";
+document.getElementById("smiley").innerHTML = smiley_url;
+// ]]></script>
+</body>
+</html>

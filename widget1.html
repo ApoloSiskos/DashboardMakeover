@@ -1,0 +1,116 @@
+<!-- W1 Widget -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+*::-moz-selection { /*Firefox*/
+    color: #000;
+    background: #124!important;
+}
+
+*::selection {
+       color: #000;
+    background: #f1f1f1!important;
+}
+
+body{
+    color: #fff;
+    font-family:Roboto;  
+    margin:0;
+}
+
+.wrapper{
+  background-color: #484848;
+}
+
+#brandSq{
+    float: left;
+    width: 41%;
+    height: 295px;
+    background-color: #E90649;
+    position: relative;
+    text-align: center;
+}
+
+#productLogo{
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width: 41%;
+  max-height: 180px;
+}
+
+#beamlySq{
+    float: left;
+    width:59%;  
+    height: 155px;
+    background-color: #fff;
+    position: relative;
+    text-align: center;  
+}
+
+#beamlyLogo{
+  float:right;
+  padding-right:5%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  max-width: 41%;
+}
+
+#heading{
+  float: left;
+  width:59%;
+  height: 70px;
+  background-color: #484848;  
+}
+
+#heading2{
+  float: left;
+  width:59%;
+  height: 70px;
+  background-color: #f1f1f1;  
+}
+
+#numbers{
+    float: left;
+    width:59%;
+    height: 70px;
+    background-color: #c6c6c6;  
+    color: #484848;
+  }
+
+h2{
+  line-height:50px;
+  text-align:center;
+  font-size: 1.4vw;
+  margin: 0;
+}
+
+img {
+    max-width:100%;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+}
+    
+</style>
+
+<div id="content1"></div>
+
+<!--Query the Data in Datorama-->
+<script>var json_data = {"headers":["Comm Heading","Comm Brand Logo","Comm Start Date","Comm End Date","METRIC TEMP NAME","IO Rate Currency","Plan Total Budget","Spend ","Comm Total Budget"],"rows":[["Always on Jan/Feb","https://dl.dropboxusercontent.com/s/7xew4q6x948t5ul/logo.png?dl=0","2018-01-09 00:00:00.0","2018-02-28 00:00:00.0","Spend",null,null,0,29476],[null,null,null,null,"Spend","EUR",29476.0007,12177.980000000005,null]]};</script>
+
+<!--Load HTML from Dropbox-->
+<script>
+
+document.getElementById("content1").innerHTML='<div class="wrapper"> <div id="brandSq"> <img id="productLogo" src="" alt="Logo"/> </div><div id="beamlySq"> <img id="beamlyLogo" src="https://dl.dropboxusercontent.com/s/048iyjm2ajuhrzr/beamly_logo.png?dl=0" alt="Beamly Logo"/> </div></div><div id="heading"> <h2><span id="Comm_Heading"></span><br><div style="line-height:10px; font-size: 1.0vw; color:#ccc;"><span id="Start_Date"></span> - <span id="End_Date"></span></div></h2> </div><div id="heading2"> <h2><div style="line-height:70px; font-size: 1.0vw; color:#484848;">Budget: <span id="total_budget"></span> <span id="metric_name"></span>: <span id="total_pacing"></span></div></h2> </div>'
+
+</script>
+
+<!--Load JS from Dropbox-->
+<script src="https://dl.dropbox.com/s/ep9du7ku2jqv861/V6_W1_js.js"></script>
+
+<!-- //W1 Widget -->
+ 

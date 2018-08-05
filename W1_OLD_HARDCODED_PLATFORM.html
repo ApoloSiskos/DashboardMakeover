@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div class="wrapper">
+<div class="row">
+<div class="col-lg-6" style="background-color: #e90649; width: 117px;">&nbsp;</div>
+<div class="col-lg-6" style="max-width: 100px; padding-left: 10px; font-size: 2vw;">Budget Status</div>
+<div class="col-lg-6">
+<div class="container">
+<div class="boxes">
+<p>TOTAL BUDGET</p>
+<div id="total_budget"></div>
+</div>
+<div class="boxes">
+<p>TOTAL <span class="metric_name"></span> TO DATE</p>
+<div id="total_spend"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div>
+<div class="infobox" id="facebook">
+<div class="infocontentheader"><img src="https://dl.dropboxusercontent.com/s/o0t7hwmiecozswk/facebook.png?dl=0" alt="facebook logo" /></div>
+<div class="rightBox">
+<h3><span class="metric_name"></span></h3>
+<h3 id="facebook_spend"></h3>
+</div>
+<div class="leftBox">
+<h3>Budget</h3>
+<h3 id="facebook_budget"></h3>
+</div>
+</div>
+<div class="infobox" id="twitter">
+<div class="infocontentheader"><img src="https://dl.dropboxusercontent.com/s/fq9jy9x653ahm41/twitter.png?dl=0" /></div>
+<div class="rightBox">
+<h3><span class="metric_name"></span></h3>
+<h3 id="twitter_spend"></h3>
+</div>
+<div class="leftBox">
+<h3>Budget</h3>
+<h3 id="twitter_budget"></h3>
+</div>
+</div>
+<div class="infobox" id="programmatic">
+<div id="programmatic" class="infocontentheader">PROGRAMMATIC</div>
+<div class="rightBox">
+<h3><span class="metric_name"></span></h3>
+<h3 id="programmatic_spend"></h3>
+</div>
+<div class="leftBox">
+<h3>Budget</h3>
+<h3 id="programmatic_budget"></h3>
+</div>
+</div>
+<div class="infobox" id="youtube">
+<div class="infocontentheader"><img src="https://dl.dropboxusercontent.com/s/klfto20x32ecnk1/youtube.png?dl=0" /></div>
+<div class="rightBox">
+<h3><span class="metric_name"></span></h3>
+<h3 id="youtube_spend"></h3>
+</div>
+<div class="leftBox">
+<h3>Budget</h3>
+<h3 id="youtube_budget"></h3>
+</div>
+</div>
+<div class="infobox" id="instagram">
+<div class="infocontentheader"><img src="https://dl.dropboxusercontent.com/s/qa6hquhrgqzs90j/instagram_white.png?dl=0" /></div>
+<div class="rightBox">
+<h3><span class="metric_name"></span></h3>
+<h3 id="instagram_spend"></h3>
+</div>
+<div class="leftBox">
+<h3>Budget</h3>
+<h3 id="instagram_budget"></h3>
+</div>
+</div>
+
+<script>// <![CDATA[
+var json_data = {Query.JSON};
+
+    var platform_data = json_data.rows;
+    var facebook_element = document.getElementById("facebook");
+    var youtube_element = document.getElementById("youtube");
+    var twitter_element = document.getElementById("twitter");
+    var instagram_element = document.getElementById("instagram");
+    var programmatic_element = document.getElementById("programmatic");
+
+    function onlyUnique(value, index, self) { 
+        return self.indexOf(value) === index;
+    }
+    function formatNumber (num) {
+        return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
+    }
+    var platforms = [];
+    for (var i in platform_data) {
+        if (platform_data[i][0] != null){
+            platforms[i] = platform_data[i][0].toLowerCase();
+        }
+    }
+   
+    var unique_platforms = platforms.filter( onlyUnique );
+
+    var target_width = 100/(unique_platforms.length-2);
+    var width_str=target_width+"%";
+
+    facebook_element.classList.add("hidden");
+    youtube_element.classList.add("hidden");
+    twitter_element.classList.add("hidden");
+    programmatic_element.classList.add("hidden");
+    instagram_element.classList.add("hidden");
+   
+    var total_spend = 0;
+    var total_budget = 0;
+    var total_display_spend = 0;
+    var total_video_spend = 0;
+    var total_mixed_spend = 0;
+    var total_display_budget = 0;
+    var total_video_budget = 0;
+    var total_mixed_budget = 0;
+    var budget_numbers = [];
+    
+    for (var i in unique_platforms) {
+        var platform_name = unique_platforms[i].toLowerCase();
+
+        var display_spend_total = 0;
+        var display_budget_total = 0;
+        var video_spend_total = 0;
+        var video_budget_total = 0;
+        var mixed_spend_total = 0;
+        var mixed_budget_total = 0;
+
+        for (var x in platform_data){
+            if (platform_data[x][0] != null){
+                    if(platform_data[x][0].toLowerCase() == platform_name && platform_data[x][1] !== 'Other'){
+                    switch(platform_data[x][1]) {
+                        case "display":
+                        // Red Dot
+                        display_spend_total = display_spend_total + platform_data[x][4];
+                        total_spend = total_spend + display_spend_total;
+                        break;
+                        case "video":
+                        video_spend_total = video_spend_total + platform_data[x][4];
+                        total_spend = total_spend + video_spend_total;
+                        break;
+                        case "mixed":
+                        mixed_spend_total = mixed_spend_total + platform_data[x][4];
+                        total_spend = total_spend + mixed_spend_total;
+                        break;
+                        default:
+                        doNothing = "";
+                    }
+                }
+            }else {
+                budget_numbers = platform_data[x];
+            }            
+        }
+
+        var platform_spend = display_spend_total + video_spend_total + mixed_spend_total;
+        var generic_element = document.getElementById(platform_name);
+
+
+        var element_spend_name = platform_name+"_spend";
+        var fl_spend = parseFloat(platform_spend).toFixed(0);
+        var curr_flag = "&euro;"+formatNumber(fl_spend);
+        document.getElementById(element_spend_name).innerHTML = curr_flag;
+
+        total_display_spend = total_display_spend + display_spend_total;
+        total_video_spend = total_video_spend + video_spend_total;
+        total_mixed_spend = total_mixed_spend + mixed_spend_total;
+    }
+
+    var total_spend_string = "<h1>&euro;" + formatNumber(Number(total_spend).toFixed(0)) + "</h1>";
+    document.getElementById("total_spend").innerHTML = total_spend_string;
+
+  if (budget_numbers.length == 0){
+      budget_numbers = platform_data[0];
+  }
+  var fl_budget = 0;
+  var curr_flag_bud = '';
+  var element_budget_name = '';
+  
+  for (var i in json_data.headers){  
+      switch(json_data.headers[i]) {
+            		case "Plan FB Budget":
+                    element_budget_name = "facebook_budget";
+                    fl_budget = parseFloat(platform_data[3][5]).toFixed(0);
+                    curr_flag_bud = "&euro;"+formatNumber(fl_budget);
+                    document.getElementById(element_budget_name).innerHTML = curr_flag_bud;
+                    break;
+                    case "Plan Total Budget":
+                    element_budget_name = "total_budget";
+                    fl_budget = parseFloat(platform_data[3][5]+platform_data[3][6]).toFixed(0);
+          	console.log(fl_budget);
+                    curr_flag_bud = "<h1>&euro;" +formatNumber(fl_budget) +"</h1>";
+                    document.getElementById(element_budget_name).innerHTML = curr_flag_bud;
+                    break;
+                    case "Plan YT Budget":
+                    element_budget_name = "youtube_budget";
+                    fl_budget = parseFloat(budget_numbers[i]).toFixed(0);
+                    curr_flag_bud = "&euro;" +formatNumber(fl_budget);
+                    document.getElementById(element_budget_name).innerHTML = curr_flag_bud;
+                    break;  
+                    case "Plan Insta Budget":
+                    element_budget_name = "instagram_budget";
+                    fl_budget = parseFloat(platform_data[3][6]).toFixed(0);
+                    curr_flag_bud = "&euro;" +formatNumber(fl_budget);
+                    document.getElementById(element_budget_name).innerHTML = curr_flag_bud;
+                    break; 
+                    case "Plan TW Budget":
+                    element_budget_name = "twitter_budget";
+                    fl_budget = parseFloat(budget_numbers[i]).toFixed(0);
+                    curr_flag_bud = "&euro;" +formatNumber(fl_budget);
+                    document.getElementById(element_budget_name).innerHTML = curr_flag_bud;
+                    break;   
+                    case "Plan Programmatic Budget":
+                    element_budget_name = "programmatic_budget";
+                    fl_budget = parseFloat(budget_numbers[i]).toFixed(0);
+                    curr_flag_bud = "&euro;" +formatNumber(fl_budget);
+                    document.getElementById(element_budget_name).innerHTML = curr_flag_bud;
+                    break;  
+                    default:
+         } 
+    }
+    
+    var statBox = Array.from(document.querySelectorAll('.infobox'));
+
+    var element_id;
+    
+    var parentBoxlist = Array.from(document.querySelectorAll('.parentbox'));
+
+    var channel_spend_check = 0;
+    var spend_channels = [];
+
+ //   if (total_mixed_spend > 0.0) {channel_spend_check = channel_spend_check + 1;spend_channels[0] = 'mixed';};
+ //   if (total_video_spend > 0.0) {channel_spend_check = channel_spend_check + 1;spend_channels[1] = 'video';};
+ //   if (total_display_spend > 0.0) {channel_spend_check = channel_spend_check + 1;spend_channels[2] = 'display';};
+
+    statBox.forEach(function(box) {
+        switch(unique_platforms.length) {
+            case 1:
+                    // 1 box
+                    element_id = box.getAttribute('id');
+                    if (unique_platforms.includes(element_id)){
+                        box.classList.add('infobox1'); 
+                        box.classList.remove('hidden');
+                    }
+                    break;
+                    case 2:
+                    // 2 box's
+                    element_id = box.getAttribute('id');
+                    if (unique_platforms.includes(element_id)){
+                        box.classList.add('infobox2'); 
+                        box.classList.remove('hidden');
+                    }
+                    break;
+                    case 3:
+                    // 3 box's
+                     element_id = box.getAttribute('id');
+                    if (unique_platforms.includes(element_id)){
+                        box.classList.add('infobox3'); 
+                        box.classList.remove('hidden');
+                    }
+                    break;  
+                    case 4:
+                    // 4 box's
+                     element_id = box.getAttribute('id');
+                    if (unique_platforms.includes(element_id)){
+                        box.classList.add('infobox4'); 
+                        box.classList.remove('hidden');
+                    }
+                    break;
+                    case 5:
+                    // 5 box's
+                    element_id = box.getAttribute('id');
+                    if (unique_platforms.includes(element_id)){
+                        box.classList.add('infobox5'); 
+                        box.classList.remove('hidden');
+                    } 
+                    break;
+                    default:
+                }
+            });
+
+    var x = document.querySelectorAll("span.metric_name");
+    x[0].innerHTML = platform_data[0][2].toUpperCase();
+  	for (z = 1; z < x.length; z++)
+    {
+     x[z].innerHTML = platform_data[0][2];
+    
+    }  
+  
+// ]]></script>
+ <!-- <div style="color:#000;">
+  {Query.JSON}</div>-->
+</body>
+</html>
